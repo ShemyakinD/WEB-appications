@@ -1,0 +1,77 @@
+﻿header {
+    color: blue;
+}
+
+nav {
+    color: red;
+}
+
+article {
+    color: black;
+}
+
+aside {
+    color: gray;
+}
+
+#NavigationBar{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: blue;
+  color:black;
+  text-decoration:none; /*Избавление от подчёркивания*/
+}
+#NavigationBar a {
+  color: whitesmoke;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}
+#NavigationBar a:hover {
+  background-color: black;
+}
+
+#NavigationBar li { display: inline; }
+
+input {
+    background: grey; /* Цвет фона */
+    padding: 7px 30px; /* Поля вокруг текста */
+    font-size: 13px; /* Размер шрифта */ 
+    font-weight: bold; /* Насыщенность шрифта */
+    color: white; /* Цвет шрифта */
+    text-align: center; /* Расположение надписи */
+}
+
+
+
+	
+	h2 {	
+	font-size: 28px;
+	font-style:italic;	
+	text-align:center;
+	}
+	
+	a{
+		text-decoration:none;
+	}
+	p{
+		text-align:center;
+	}
+
+#wrap{
+	width: 800px;	
+	margin: 0 auto;		
+}
+
+#mapContainer {
+	position:relative;
+    height: 500px;
+    width: 800px;
+	border:10px solid #eaeaea;	
+}
+
+

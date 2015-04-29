@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML 5</title>
+    <link rel="stylesheet" type="text/css" href="html5.css" />
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn:700italic,400' rel='stylesheet' type='text/css'>
+    <script>
+        /*function showPosition() {
+            debugger;
+            var x = document.getElementById("geo")
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (p) {
+                    x.innerHTML = "latitude: " + p.coords.latitude + "<br>longitude: " + p.coords.longitude;
+                    x.innerHTML = "FUCK  " + p.coords.getCurrentPosition;
+                },
+                function (err) { alert(err.message); });
+            }
+            else {
+                x.innerHTML = "geolocation is not supported by this browser";
+            }
+        }*/
+
+        type = "text/javascript" >
+        ymaps.ready(init);
+
+        function init() {
+
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var myMap = new ymaps.Map("mapContainer", {
+                        center: [latitude, longitude],
+                        zoom: 16
+                    });
+
+                    myMap.controls
+                        .add('zoomControl')
+                        .add('typeSelector')
+                        .add('mapTools');
+
+                    var myPlacemark = new ymaps.Placemark([latitude, longitude], {
+                    }, {
+                        preset: "twirl#redIcon"
+                    });
+                    // Добавляем метку в коллекцию
+                    myMap.geoObjects.add(myPlacemark);
+                });
+            } else {
+                alert("Geolocation API не поддерживается в вашем браузере");
+            }
+
+
+        }
+
+        
+
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Контакты</h1>
+        <span id="geo"></span>
+    </header>
+    <nav>
+        <ul id="NavigationBar">
+            <li class="current"><a href="contacts.html">Контакты</a></li>
+            <li><a href="html 5.html">Новости</a></li>
+        </ul>
+    </nav>
+    
+    <div id="wrap">
+        <div id="mapContainer"></div>
+    </div>
+
+        <div style="text-align:center;">
+            <input type="button" value="My position" onclick="init()" />
+        </div>
+</body>
+</html>
