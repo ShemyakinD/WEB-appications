@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>CanvasTask</title>
+        <meta charset='utf-8' />
+    </head>
+    <body>
+        <canvas id='example'></canvas>
+        <script>
+
+            var positionX = 250;
+            var positionY = 50;
+            
+           
+
+            function draw() {
+                var canv = document.getElementById("example"),
+                    ctx = canv.getContext('2d');
+
+
+                canv.width = 315;
+                canv.height = 315;
+
+                ctx.clearRect(0, 0, 315, 315);
+
+                //Небо
+                ctx.beginPath();
+
+                if (positionX < 260) {
+
+                    ctx.beginPath();
+                    ctx.fillStyle = "rgb(30,144,255)";
+                    ctx.fillRect(15, 15, 300, 300);
+                  
+                }               
+                if ((positionX >= 260) && (positionX < 280)) {
+                    ctx.fillStyle = "rgb(65,105,255)";
+                    ctx.fillRect(15, 15, 300, 300);
+
+                }
+                if ((positionX >= 280) && (positionX < 300)) {
+                      ctx.fillStyle = "rgb(72,61,205)";
+                      ctx.fillRect(15, 15, 300, 300);
+                }
+                if ((positionX >= 300) && (positionX < 320)) {
+                      ctx.fillStyle = "rgb(25,25,112)";
+                      ctx.fillRect(15, 15, 300, 300);
+                }
+                  if (positionX >= 320) {
+                      ctx.fillStyle = "rgb(0,0,128)";
+                      ctx.fillRect(15, 15, 300, 300);
+                }
+                
+                 
+                
+               
+
+                ctx.fillStyle = "brown";
+                ctx.save();
+             
+                ctx.beginPath();
+                ctx.strokeRect(15, 15, 300, 300);
+                ctx.save();
+
+
+                //дом
+                ctx.beginPath();
+                ctx.fillRect(15, 215, 100, 100);
+                ctx.save();
+
+                //крыша
+                ctx.beginPath();
+                ctx.moveTo(15, 215);
+                ctx.lineTo(65, 165);
+                ctx.lineTo(115, 215);
+                ctx.fill();
+                ctx.save();
+                //начинка дома
+                ctx.beginPath();
+                ctx.strokeRect(30, 255, 30, 30);
+                ctx.fillRect(80, 155, 5, 30);
+                ctx.moveTo(45, 285);
+                ctx.lineTo(45, 255);
+                ctx.moveTo(30, 270);
+                ctx.lineTo(60, 270);
+                ctx.moveTo(15, 215);
+                ctx.lineTo(115, 215);
+                ctx.stroke();
+                ctx.save();
+                //труба
+                ctx.beginPath();
+                ctx.fillStyle = "black";
+                ctx.fillRect(80, 155, 5, 30);
+                ctx.save();
+
+                //ботва
+                ctx.beginPath();
+                ctx.fillStyle = "green";
+                ctx.fillRect(115, 300, 200, 15);
+                ctx.save();
+                
+
+
+                //солнце
+
+
+                ctx.beginPath();
+                ctx.fillStyle = "rgb(255,215,0)";
+                ctx.arc(positionX, positionY, 20, 80, 1 / 4 * Math.PI, true);
+                ctx.fill();
+
+            
+              positionY += 0.5;
+              positionX += 0.5;
+             
+           
+
+                setTimeout("draw()", 20);
+            }
+            draw();
+                    
+        </script>
+    </body>
+</html>
