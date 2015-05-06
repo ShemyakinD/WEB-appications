@@ -1,0 +1,8 @@
+{
+    success: true,
+    products: [
+        {id: 1, name: 'Ботинки',    price: 10, amount: 4, material: 'leather', size: 40, cost: price*amount },
+        {id: 2, name: 'Сапоги', price: 200, amount: 45, material: 'iron', size: 52, cost: price*amount },
+        
+    ]
+}
