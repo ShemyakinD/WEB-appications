@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="javascript" src="~/Scripts/game.js"></script>
+    <script type="text/javascript" src="~/Scripts/ext-all-debug.js"></script>
+
+    <script type="text/javascript">
+        function SubmitStats(parameters) {
+            Ext.Ajax.request({
+                url: '/Home/SaveStats',
+                method: 'POST',
+                params: {
+                    data: Ext.encode({
+                        user: document.getElementById("YourName").value,
+                        money: document.getElementById("bidamount").value
+                    })
+                },
+                success: function (response) {
+                    var text = response.responseText;
+                    alert(text);
+                    // process server response here
+                }
+            });
+        }
+    </script>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+        a {
+            display: block;
+        }
+    </style>
+
+
+    <title>Игровой портал</title>
+</head>
+<body onload="draw()">
+    <header>Тарканьи бега</header>
+    <nav>
+        <ul>
+            <li><a href="/Home/Index">Главная</a></li>
+            <li><a href="/Home/Manage">Управление</a></li>
+        </ul>
+    </nav>
+    <article>
+        <section id="CanvasSection">
+            <input type="text" id="YourName">
+            <!--<input type="button" id="AccessName">-->
+
+            <h1><canvas id="example" height="500" width="1400"></canvas></h1>
+            <input type="button" value="Газуля" onclick="push(), draw()">
+      
+            <!--Кнопки для тараканов-->
+            <div style="float:left;width: 200px" id="Bugs">
+                <form method="post">
+                    <input type="radio" id="radio11" value="Первый атлетр" name="bug" /> Первый атлет<br>
+                    <input type="radio" id="radio12" value="Второй атлетр" name="bug" /> Второй атлет<br>
+                    <input type="radio" id="radio13" value="Третий атлетр" name="bug" /> Третий атлет<br>
+                    <input type="radio" id="radio14" value="Четвёртый отлетр" name="bug" /> Четвёртый отлет<br>
+                </form>
+            </div>
+
+            <!--Кнопки для игроков-->
+            @*<div style="float:left; width:200px" id="Players">
+                <form method="post">
+                    <input type="radio" id="radio21" value=" первым таракановодом" name="player" /> Первый таракановод<br>
+                    <input type="radio" id="radio22" value=" вторым таракановодом" name="player" /> Второй таракановод<br>
+                    <input type="radio" id="radio23" value=" третим таракановодом" name="player" /> Третий таракановод<br>
+                </form>
+            </div>*@
+
+            <!--Ставки-->
+            <div style="float:left; width:200px" id="Bids">
+                <br> Ваши баблы
+                <input type="number" id="bidamount"  name="Bid">
+                <input type="button" value="Сделать ставку" onclick="AddBid()">
+            </div>
+
+            <!--Лист ставок-->
+            <div style="float:left; width:600px" id="list">
+                <select style="height:100px; width:600px" size="5" id="Spisok"></select>
+            </div>
+
+            <!--Кнопка сброса-->
+            <input type="button" value="Сброс" onclick="window.location.reload()" />
+
+            <!--Лист выигрышей-->
+            <select style="height:100px; width:600px" size="5" id="Winners"></select>
+
+            <!--Кнопка результатов-->
+            <input type="button" value="Results" onclick="win()" />
+
+        </section>
+        <button id="btnSubmitStat" type="submit" onclick="SubmitStats()">Сохранить результаты</button>
+    </article>
+
+  
+</body>
+</html>
